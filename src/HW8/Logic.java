@@ -12,6 +12,7 @@ public class Logic {
     public static Random rand = new Random();
     public static boolean isGameFinished;
     public static boolean isDraw;
+    public static String winner;
 
     public static int[][] winningCells = new int[DOTS_TO_WIN][2];
 
@@ -22,24 +23,24 @@ public class Logic {
         printMap();
         if (checkWin(DOT_X)) {
             isDraw = false;
-            System.out.println("Победил человек");
+            winner = "Победил человек";
             return;
         }
         if (isMapFull()) {
             isDraw = true;
-            System.out.println("Ничья");
+            winner = "Ничья";
             return;
         }
         aiTurn();
         printMap();
         if (checkWin(DOT_O)) {
             isDraw = false;
-            System.out.println("Победил Искуственный Интеллект");
+            winner = "Победил Искуственный Интеллект";
             return;
         }
         if (isMapFull()) {
             isDraw = true;
-            System.out.println("Ничья");
+            winner = "Ничья";
             return;
         }
         isGameFinished = false;

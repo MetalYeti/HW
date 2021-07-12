@@ -9,6 +9,7 @@ public class BattleMap extends JPanel {
     private MainWindow mainWindow;
     private int fieldSize;
     private int winLength;
+    private BattleMap map;
 
     private boolean isInit;
 
@@ -18,6 +19,7 @@ public class BattleMap extends JPanel {
 
     public BattleMap(MainWindow mainWindow) {
         this.mainWindow = mainWindow;
+        map = this;
         setBackground(Color.LIGHT_GRAY);
 
         addMouseListener(new MouseAdapter() {
@@ -29,6 +31,10 @@ public class BattleMap extends JPanel {
 
                     if (!Logic.isGameFinished) {
                         Logic.humanTurn(cellX, cellY);
+                    }
+                    if (Logic.isGameFinished) {
+                        repaint();
+                        JOptionPane.showMessageDialog(map, Logic.winner);
                     }
                     repaint();
                 }
