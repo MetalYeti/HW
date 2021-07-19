@@ -1,4 +1,4 @@
-package HW6.Animals;
+package JAVA1.HW6.Animals;
 
 public abstract class Animal {
     protected String name;

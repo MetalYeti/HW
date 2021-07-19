@@ -1,4 +1,4 @@
-package HW7;
+package JAVA1.HW7;
 
 public class Cat {
     private String name;

@@ -1,6 +1,6 @@
-package HW6;
+package JAVA1.HW6;
 
-import HW6.Animals.*;
+import JAVA1.HW6.Animals.*;
 
 public class Main {
     public static void main(String[] args) {

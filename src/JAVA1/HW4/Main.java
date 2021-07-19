@@ -1,49 +1,44 @@
-package HW8;
+package JAVA1.HW4;
 
 import java.util.Random;
+import java.util.Scanner;
 
-public class Logic {
+public class Main {
     public static int SIZE = 5;
     public static int DOTS_TO_WIN = 4;
     public static final char DOT_EMPTY = '•';
     public static final char DOT_X = 'X';
     public static final char DOT_O = 'O';
     public static char[][] map;
+    public static Scanner sc = new Scanner(System.in);
     public static Random rand = new Random();
-    public static boolean isGameFinished;
-    public static boolean isDraw;
-    public static String winner;
 
-    public static int[][] winningCells = new int[DOTS_TO_WIN][2];
-
-
-    public static void go() {
-        isGameFinished = true;
-
+    public static void main(String[] args) {
+        initMap();
         printMap();
-        if (checkWin(DOT_X)) {
-            isDraw = false;
-            winner = "Победил человек";
-            return;
+        while (true) {
+            humanTurn();
+            printMap();
+            if (checkWin(DOT_X)) {
+                System.out.println("Победил человек");
+                break;
+            }
+            if (isMapFull()) {
+                System.out.println("Ничья");
+                break;
+            }
+            aiTurn();
+            printMap();
+            if (checkWin(DOT_O)) {
+                System.out.println("Победил Искуственный Интеллект");
+                break;
+            }
+            if (isMapFull()) {
+                System.out.println("Ничья");
+                break;
+            }
         }
-        if (isMapFull()) {
-            isDraw = true;
-            winner = "Ничья";
-            return;
-        }
-        aiTurn();
-        printMap();
-        if (checkWin(DOT_O)) {
-            isDraw = false;
-            winner = "Победил Искуственный Интеллект";
-            return;
-        }
-        if (isMapFull()) {
-            isDraw = true;
-            winner = "Ничья";
-            return;
-        }
-        isGameFinished = false;
+        System.out.println("Игра закончена");
     }
 
     public static boolean checkWin(char symb) {
@@ -70,18 +65,11 @@ public class Logic {
 
         if (maxPointX >= SIZE || maxPointY < 0 || maxPointY >= SIZE) return false;
 
-        int[][] tempWinCells = new int[DOTS_TO_WIN][2];
-
         for (int i = 0; i < DOTS_TO_WIN; i++) {
-            int tryX = x + i * shiftDirectionX;
-            int tryY = y + i * shiftDirectionY;
-
-            tempWinCells[i] = new int[]{tryX, tryY};
-            if (map[tryY][tryX] != symb) {
+            if (map[y + i * shiftDirectionY][x + i * shiftDirectionX] != symb) {
                 return false;
             }
         }
-        winningCells = tempWinCells;
         return true;
     }
 
@@ -140,11 +128,14 @@ public class Logic {
         map[y][x] = DOT_O;
     }
 
-    public static void humanTurn(int x, int y) {
-        if (isCellValid(x, y)) {
-            map[y][x] = DOT_X;
-            go();
-        }
+    public static void humanTurn() {
+        int x, y;
+        do {
+            System.out.println("Введите координаты в формате X Y");
+            x = sc.nextInt() - 1;
+            y = sc.nextInt() - 1;
+        } while (!isCellValid(x, y));
+        map[y][x] = DOT_X;
     }
 
     public static boolean isCellValid(int x, int y) {

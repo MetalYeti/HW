@@ -1,4 +1,4 @@
-package HW8;
+package JAVA1.HW8;
 
 import javax.swing.*;
 import java.awt.*;
