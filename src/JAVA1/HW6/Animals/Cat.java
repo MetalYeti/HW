@@ -1,4 +1,4 @@
-package HW6.Animals;
+package JAVA1.HW6.Animals;
 
 public class Cat extends Animal {
     private final int RUN_LIMIT = 200;

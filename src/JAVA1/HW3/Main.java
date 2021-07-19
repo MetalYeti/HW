@@ -1,4 +1,4 @@
-package HW3;
+package JAVA1.HW3;
 
 public class Main {
     public static void main(String[] args) {
