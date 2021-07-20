@@ -10,6 +10,9 @@ public enum DayOfWeek {
     }
 
     public int getWorkingHours() {
-        return (6 - order) * 8;
+        if (order < 6) {
+            return (6 - order) * 8;
+        }
+        return 0;
     }
 }
