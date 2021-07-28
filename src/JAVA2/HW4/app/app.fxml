@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextArea?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="JAVA2.HW4.app.Controller">
+    <center>
+        <TextArea fx:id="textField" focusTraversable="false" mouseTransparent="true" editable="false">
+            <padding><Insets topRightBottomLeft="10.0"/></padding>
+        </TextArea>
+    </center>
+    <bottom>
+        <HBox>
+            <TextField fx:id="inputText" promptText="Введите сообщение" onAction="#onButtonClick" HBox.hgrow="ALWAYS"/>
+            <Button text="Send message" onAction="#onButtonClick"/>
+        </HBox>
+    </bottom>
+</BorderPane>
