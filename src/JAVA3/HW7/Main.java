@@ -40,7 +40,7 @@ public class Main {
         testMethods.sort(Comparator.comparingInt(m -> m.getAnnotation(Test.class).priority()));
 
         try {
-            TestClass test = (TestClass) testClass.newInstance();
+            Object test = testClass.newInstance();
 
             if (beforeSuite != null) {
                 System.out.println("Работает BeforeSuite");
